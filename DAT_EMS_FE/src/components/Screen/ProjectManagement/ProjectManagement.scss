@@ -1,0 +1,252 @@
+.DAT_ProjectManagement {
+  min-height: calc(100vh - 108px);
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(226, 232, 240, 1);
+  border-radius: 8px;
+  box-shadow: 0px 10px 24px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  box-sizing: border-box;
+
+  .header {
+    min-height: 84px;
+    padding: 18px 24px;
+    border-bottom: 1px solid rgba(226, 232, 240, 1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    .header-info {
+      h1 {
+        margin: 0px;
+        color: rgba(15, 23, 42, 1);
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 0px;
+      }
+
+      p {
+        margin: 4px 0px 0px;
+        color: rgba(100, 116, 139, 1);
+        font-size: 13px;
+      }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 0 0 auto;
+
+      .search-box {
+        width: 360px;
+        height: 38px;
+        padding: 0px 12px;
+        border: 1px solid rgba(203, 213, 225, 1);
+        border-radius: 4px;
+        background: rgba(248, 250, 252, 1);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: rgba(100, 116, 139, 1);
+        box-sizing: border-box;
+
+        svg {
+          width: 17px;
+          height: 17px;
+          flex-shrink: 0;
+          color: var(--pd-bg-650);
+        }
+
+        input {
+          width: 100%;
+          min-width: 0px;
+          border: 0px;
+          outline: 0px;
+          background: transparent;
+          color: rgba(15, 23, 42, 1);
+          font-size: 13px;
+
+          &::placeholder {
+            color: rgba(148, 163, 184, 1);
+          }
+        }
+      }
+
+      .btn-create {
+        height: 38px;
+        padding: 0px 14px;
+        border: 1px solid var(--pd-bg-650);
+        border-radius: 4px;
+        background: var(--pd-bg-650);
+        color: rgba(255, 255, 255, 1);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: 0.2s ease;
+
+        svg {
+          width: 17px;
+          height: 17px;
+        }
+
+        &:hover {
+          background: var(--pd-bg-650);
+          border-color: var(--pd-bg-650);
+          box-shadow: 0px 0px 14px rgba(28, 45, 77, 0.3);
+        }
+      }
+    }
+  }
+
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+
+    table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+
+      thead {
+        background: rgba(248, 250, 252, 1);
+
+        th {
+          padding: 13px 16px;
+          border-bottom: 1px solid rgba(226, 232, 240, 1);
+          text-align: left;
+          vertical-align: middle;
+          font-size: 13px;
+          color: var(--pd-bg-650);
+          font-weight: 600;
+        }
+      }
+
+      tbody {
+        tr {
+          transition: background 0.2s ease;
+
+          &:hover {
+            background: rgba(28, 45, 77, 0.06);
+          }
+
+          td {
+            padding: 13px 16px;
+            border-bottom: 1px solid rgba(226, 232, 240, 1);
+            text-align: left;
+            vertical-align: middle;
+            font-size: 13px;
+            color: rgba(15, 23, 42, 1);
+
+            .project-name {
+              min-width: 220px;
+
+              strong {
+                display: block;
+                color: rgba(15, 23, 42, 1);
+                font-weight: 600;
+                line-height: 1.25;
+              }
+
+              small {
+                display: block;
+                margin-top: 3px;
+                color: rgba(100, 116, 139, 1);
+                font-size: 11px;
+                font-family: monospace;
+              }
+            }
+
+            .cell-icon {
+              display: inline-flex;
+              align-items: center;
+              gap: 7px;
+              color: rgba(51, 65, 85, 1);
+              white-space: nowrap;
+
+              svg {
+                width: 15px;
+                height: 15px;
+                color: var(--pd-bg-650);
+                flex-shrink: 0;
+              }
+            }
+
+            .status-badge {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              min-height: 24px;
+              padding: 3px 9px;
+              border-radius: 4px;
+              font-size: 11px;
+              font-weight: 600;
+              white-space: nowrap;
+
+              &.success {
+                background: rgba(16, 185, 129, 0.2);
+                border: 1px solid rgba(16, 185, 129, 0.5);
+                color: rgba(52, 211, 153, 1);
+              }
+
+              &.danger {
+                background: rgba(239, 68, 68, 0.2);
+                border: 1px solid rgba(239, 68, 68, 0.5);
+                color: rgba(248, 113, 113, 1);
+              }
+            }
+
+            .row-actions {
+              display: flex;
+              justify-content: flex-end;
+              gap: 6px;
+
+              button {
+                width: 30px;
+                height: 30px;
+                border: 1px solid rgba(28, 45, 77, 0.25);
+                border-radius: 4px;
+                background: rgba(240, 249, 255, 1);
+                color: var(--pd-bg-650);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: 0.2s ease;
+
+                svg {
+                  width: 14px;
+                  height: 14px;
+                }
+
+                &:hover {
+                  background: var(--pd-bg-650);
+                  border-color: var(--pd-bg-650);
+                  color: rgba(255, 255, 255, 1);
+                }
+
+                &.btn-delete:hover {
+                  background: rgba(239, 68, 68, 1);
+                  border-color: rgba(239, 68, 68, 1);
+                  color: rgba(255, 255, 255, 1);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .empty-state {
+      padding: 40px 16px;
+      color: rgba(100, 116, 139, 1);
+      text-align: center;
+      font-size: 13px;
+    }
+  }
+}

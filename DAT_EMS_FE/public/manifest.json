@@ -1,0 +1,14 @@
+{
+  "short_name": "EMS",
+  "name": "EMS",
+  "icons": [
+    {
+      "src": "/img/Embody_APP_25.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+ "start_url": "/",
+  "display": "fullscreen",
+  "theme_color": "white"
+}

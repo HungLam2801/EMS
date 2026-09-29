@@ -1,0 +1,574 @@
+.DAT_ElectricDetail {
+  min-height: 100vh;
+  background: rgba(6, 13, 36, 1);
+  color: rgba(255, 255, 255, 1);
+  padding: 16px 20px 10px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  /* Header */
+  &_Header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+
+    &_BackBtn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(8, 26, 60, 0.8);
+      border: 1px solid rgba(34, 211, 238, 0.4);
+      color: rgba(255, 255, 255, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s ease;
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      &:hover {
+        background: rgba(0, 130, 202, 1);
+        border-color: rgba(34, 211, 238, 1);
+        box-shadow: 0px 0px 12px rgba(34, 211, 238, 0.4);
+      }
+    }
+
+    &_Title {
+      margin: 0px;
+      font-size: 15px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 1);
+      letter-spacing: 0.3px;
+      line-height: 1.1;
+    }
+  }
+
+  &_EnergyOverview {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 14px;
+    padding: 22px 20px;
+    border: 1px solid rgba(19, 43, 92, 1);
+    border-radius: 10px;
+    background: rgba(8, 17, 46, 1);
+
+    &_Item {
+      min-width: 0;
+      padding: 0 14px;
+
+      & + & { border-left: 1px solid rgba(54, 74, 110, 0.55); }
+
+      &_Value {
+        display: block;
+        color: rgba(0, 210, 255, 1);
+        font-size: clamp(24px, 2vw, 34px);
+        line-height: 1.1;
+        letter-spacing: 1px;
+      }
+
+      &_Label,
+      &_Compare span {
+        display: block;
+        margin-top: 8px;
+        color: rgba(139, 171, 207, 1);
+        font-size: 11px;
+      }
+
+      &_Divider {
+        height: 1px;
+        margin: 20px 0 14px;
+        background: rgba(54, 74, 110, 0.45);
+      }
+
+      &_Compare {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+
+        > div > strong { font-size: 17px; }
+        > strong { font-size: 14px; white-space: nowrap; }
+        .is-positive { color: rgb(52, 211, 153); }
+        .is-negative { color: rgb(251, 113, 133); }
+      }
+    }
+  }
+
+  /* Grid: power column + two phase cards */
+  &_Grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 14px;
+
+    /* Base Card (Card 1) */
+    &_Card {
+      background: rgba(8, 17, 46, 1);
+      border: 1px solid rgba(19, 43, 92, 1);
+      border-radius: 8px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+
+      &_TitleCyan {
+        margin: 0px 0px 10px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        color: rgba(0, 210, 255, 1);
+      }
+
+      &_Divider {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.07);
+        margin: 8px 0px;
+      }
+
+      &_EnergySection {
+        padding: 4px 0px;
+
+        &_Label {
+          display: block;
+          color: rgba(125, 143, 166, 1);
+          font-size: 11px;
+          margin-bottom: 4px;
+        }
+
+        &_ValueRow {
+          display: flex;
+          align-items: baseline;
+          gap: 6px;
+
+          &_BigNum {
+            font-size: 24px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 1);
+            letter-spacing: 0.5px;
+          }
+
+          &_MidNum {
+            font-size: 19px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 1);
+          }
+
+          &_Unit {
+            font-size: 11px;
+            color: rgba(125, 143, 166, 1);
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    /* Card 2: Cột 3 khối công suất */
+    &_PowersCol {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+
+      &_PowerCard {
+        background: rgba(8, 17, 46, 1);
+        border: 1px solid rgba(19, 43, 92, 1);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex: 1;
+        padding: 10px 16px;
+
+        &_TitleCyan {
+          margin: 0;
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 0.4px;
+          color: rgba(0, 210, 255, 1);
+        }
+
+        &_ValueRow {
+          display: flex;
+          align-items: baseline;
+          gap: 6px;
+
+          &_BigNum {
+            font-size: 24px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 1);
+            letter-spacing: 0.5px;
+          }
+
+          &_Unit {
+            font-size: 11px;
+            color: rgba(125, 143, 166, 1);
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    /* Card 3 & 4: Phase Cards */
+    &_PhaseCard {
+      background: rgba(8, 17, 46, 1);
+      border: 1px solid rgba(19, 43, 92, 1);
+      border-radius: 8px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      h3 {
+        margin: 0px 0px 10px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        color: rgba(255, 255, 255, 1);
+      }
+
+      &_Header {
+        display: grid;
+        grid-template-columns: 42px 1fr 1fr;
+        gap: 16px;
+        text-align: center;
+        margin-bottom: 12px;
+
+        span {
+          font-size: 11px;
+          color: rgba(0, 210, 255, 1);
+          font-weight: 600;
+
+          &:first-child {
+            grid-column: 2;
+          }
+        }
+      }
+
+      &_List {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+
+        &_Item {
+          display: grid;
+          grid-template-columns: 42px 1fr 1fr;
+          gap: 16px;
+          align-items: flex-start;
+
+          &_BadgeCol {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+
+            small {
+              font-size: 9.5px;
+              color: rgba(125, 143, 166, 1);
+              white-space: nowrap;
+            }
+
+            &_Badge {
+              width: 24px;
+              height: 24px;
+              border-radius: 6px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: rgba(255, 255, 255, 1);
+              font-size: 12px;
+              font-weight: 700;
+
+              &_purple { background: rgba(157, 78, 221, 1); }
+              &_green  { background: rgba(112, 180, 0, 1); }
+              &_cyan   { background: rgba(0, 168, 204, 1); }
+            }
+          }
+
+          &_MetricCol {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 1px;
+
+            &_Val {
+              display: flex;
+              align-items: baseline;
+              justify-content: center;
+              gap: 4px;
+              margin-bottom: 6px;
+              line-height: 1;
+
+              strong {
+                font-size: 16px;
+                font-weight: 700;
+                color: rgba(255, 255, 255, 1);
+              }
+
+              span {
+                font-size: 10px;
+                color: rgba(125, 143, 166, 1);
+              }
+            }
+
+            &_Bar {
+              width: 100%;
+              height: 4px;
+              border-radius: 2px;
+
+              &_purple { background: rgba(157, 78, 221, 1); }
+              &_green  { background: rgba(112, 180, 0, 1); }
+              &_cyan   { background: rgba(0, 168, 204, 1); }
+              &_orange { background: rgba(245, 158, 11, 1); }
+            }
+          }
+        }
+      }
+
+      &_Legend {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 14px;
+        padding-top: 8px;
+
+        .dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+
+          &-purple { background: rgba(157, 78, 221, 1); }
+          &-orange { background: rgba(245, 158, 11, 1); }
+        }
+
+        label {
+          font-size: 10px;
+          color: rgba(140, 158, 181, 1);
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+
+  /* =========================
+     TREND CARD - CHỈ ELECTRIC
+  ========================= */
+
+  &_TrendCard {
+    position: relative;
+    width: 100%;
+    min-height: 368px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    color: rgba(148, 163, 184, 1);
+    font-weight: 700;
+    background: rgba(8, 17, 46, 1);
+    border: 1px solid rgba(19, 43, 92, 1);
+    overflow: hidden;
+
+    &_Charts {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+
+      &_Instant,
+      &_Accumulated {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      &_Instant {
+        flex: 1;
+        padding-right: 20px;
+
+        &_Header {
+          height: 24px;
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+          align-items: center;
+          gap: 8px;
+
+          &_Label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+
+          &_Title {
+            font-weight: 700;
+            color: rgba(255, 255, 255, 1);
+          }
+
+          &_Unit {
+            padding-top: 5px;
+            font-family: monospace;
+            font-size: 9px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+
+          &_Date {
+            height: 28px;
+            padding: 0 9px;
+            border: 1px solid rgba(59, 130, 246, 0.6);
+            border-radius: 6px;
+            background: rgba(6, 13, 36, 1);
+            color: rgba(255, 255, 255, 1);
+            color-scheme: dark;
+            font-size: 10px;
+            outline: none;
+          }
+
+          &_Export {
+            justify-self: end;
+            height: 28px;
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(56, 189, 248, 0.72);
+            border-radius: 20px;
+            background: rgba(6, 13, 36, 1);
+            color: rgb(186, 230, 253);
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+
+            &:hover {
+              color: rgb(240, 249, 255);
+              border-color: rgb(125, 211, 252);
+              box-shadow: 0 0 9px rgba(56, 189, 248, 0.72);
+            }
+          }
+        }
+
+        &_Content {
+          position: relative;
+          flex: 1;
+          min-height: 0;
+          margin-top: 8px;
+        }
+      }
+
+      &_Line {
+        flex: 0 0 1px;
+        width: 1px;
+        margin: 0 18px;
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      &_Accumulated {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+
+        &_Header {
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+
+          &_Title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 1);
+
+            &_Unit {
+              padding-top: 8px;
+              font-family: monospace;
+              font-size: 9px;
+              font-weight: 600;
+              color: rgba(255, 255, 255, 0.5);
+            }
+          }
+
+          &_Actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 14px;
+          }
+
+          &_Compare {
+            font-size: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+          }
+
+          &_Period {
+            --period-color: rgb(96, 165, 250);
+            --period-color-soft: rgba(59, 130, 246, 0.15);
+            --period-color-medium: rgba(59, 130, 246, 0.35);
+
+            height: 30px;
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            border: 1px solid var(--period-color-medium);
+            border-radius: 20px;
+            background: rgba(6, 13, 36, 1);
+
+            &_Item {
+              min-width: 62px;
+              height: 22px;
+              padding: 0 12px;
+              border: 1px solid transparent;
+              border-radius: 20px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: transparent;
+              color: rgba(148, 163, 184, 1);
+              font-size: 10px;
+              font-weight: 700;
+              cursor: pointer;
+              transition: all 0.2s;
+
+              &:hover {
+                color: var(--period-color);
+                background: var(--period-color-soft);
+              }
+
+              &_Active {
+                color: var(--period-color);
+                border-color: var(--period-color-medium);
+                background: var(--period-color-soft);
+                box-shadow: inset 0 1px 2px var(--period-color-medium);
+
+                &:hover {
+                  color: var(--period-color);
+                  border-color: var(--period-color-medium);
+                  background: var(--period-color-soft);
+                }
+              }
+            }
+          }
+        }
+
+        &_Content {
+          position: relative;
+          flex: 1;
+          min-height: 0;
+          margin-top: 8px;
+        }
+      }
+    }
+  }
+}

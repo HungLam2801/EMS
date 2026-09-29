@@ -1,0 +1,344 @@
+.DAT_RoleSettingMobile {
+    &_Card {
+        padding: var(--space-lg);
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-md);
+        background: var(--card-bg);
+        box-shadow: var(--shadow-card);
+        transition: box-shadow var(--transition-base);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-base);
+        flex-wrap: wrap;
+
+        &_Info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            &_Icon {
+                display: flex;
+                align-items: center;
+                color: var(--text-primary);
+            }
+
+            &_Title {
+                color: var(--text-primary);
+                font-size: 24px;
+                font-weight: var(--font-weight-semibold);
+            }
+        }
+
+        &_Actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+
+            &_FilterInput,
+            &_FilterSelect {
+                width: 100%;
+                height: 42px;
+                border: 1px solid var(--border);
+                border-radius: var(--radius-md);
+                background: var(--card-bg);
+                color: var(--text-body);
+                font-size: var(--font-size-base);
+                outline: none;
+                transition: all var(--transition-fast);
+
+                &:focus {
+                    border-color: var(--primary);
+                    box-shadow: var(--shadow-focus);
+                }
+            }
+
+            &_FilterInput {
+                padding: 0 14px;
+
+                &::placeholder {
+                    color: var(--text-muted);
+                }
+            }
+
+            &_FilterSelect {
+                padding: 0 32px 0 14px;
+                appearance: none;
+                cursor: pointer;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: right 12px center;
+            }
+
+            &_Button_Primary,
+            &_Button_Secondary,
+            &_Button_Ghost,
+            &_Button_GhostSm,
+            &_Button_SecondarySm {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: var(--space-sm);
+                padding: 10px 20px;
+                border: 1px solid transparent;
+                border-radius: var(--radius-md);
+                font-size: var(--font-size-base);
+                font-weight: var(--font-weight-medium);
+                line-height: 1.4;
+                white-space: nowrap;
+                transition: all var(--transition-base);
+            }
+
+            &_Button_Primary {
+                background: var(--primary);
+                color: rgba(255, 255, 255, 1);
+
+                &:hover {
+                    background: var(--primary-hover);
+                    box-shadow: 0 4px 12px rgba(11, 25, 103, 0.22);
+                }
+            }
+        }
+
+        &:hover {
+            box-shadow: var(--shadow-md);
+        }
+    }
+
+    &_Container {
+        padding: 10px 5px;
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-md);
+        background: var(--card-bg);
+        box-shadow: var(--shadow-card);
+        transition: box-shadow var(--transition-base);
+        margin-top: 10px;
+
+        &_Card {
+            // padding: var(--space-lg);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            background: var(--card-bg);
+            box-shadow: var(--shadow-card);
+            transition: box-shadow var(--transition-base);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+            position: relative;
+            height: 60px;
+
+            &_Left {
+                height: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &_Label {
+                    background: var(--primary);
+                    color: white;
+                    border-top-left-radius: var(--radius-md);
+                    border-bottom-left-radius: var(--radius-md);
+                    font-weight: var(--font-weight-bold);
+                    padding: 0px 5px;
+                    margin-right: 8px;
+                    height: 60px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                &_Item {
+                    &_Title {
+                        font-weight: var(--font-weight-bold);
+                        color: var(--primary);
+                    }
+
+                    &_Subtitle {
+                        color: var(--text-secondary);
+                        font-size: var(--font-size-xs);
+                    }
+                }
+            }
+
+            &_Right {
+                display:flex;
+                padding-right: 10px;
+                &_Item {
+                    text-align: end;
+                    margin-right: 8px;
+
+                    &_Date {
+                        color: var(--text-secondary);
+                        font-size: var(--font-size-xs);
+                    }
+                }
+
+                &_Button {
+                    font-size: 14px;
+                    font-weight: 500;
+                    border-radius: 6px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 4px;
+                    height: 28px;
+                    border: none;
+                    white-space: nowrap;
+                    border: 1px solid var(--border);
+                    background: rgba(0, 0, 0, 0);
+                    color: var(--primary);
+                    width: 28px;
+                }
+            }
+        }
+    }
+
+    &_Modal {
+        align-items: center;
+        justify-content: center;
+
+        &_Row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+
+            &_Label {
+                cursor: default;
+                color: var(--text-primary);
+                font-weight: var(--font-weight-semibold);
+            }
+
+            &_Box {
+                align-items: center;
+                border: 1px solid rgba(198, 197, 197, 0.5);
+                border-radius: 5px;
+                display: flex;
+                gap: 8px;
+                justify-content: center;
+                width: 100%;
+
+                input {
+                    border: none;
+                    box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    height: 30px;
+                    outline: none;
+                    padding: 8px;
+                    width: 100%;
+                }
+
+                button {
+                    cursor: pointer;
+                    padding: 8px;
+                    border: none;
+                    background: transparent;
+                }
+            }
+        }
+
+        &_Foot {
+            display: flex;
+            justify-content: flex-end;
+
+            &_Btn_Cancel {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: var(--space-sm);
+                padding: 10px 20px;
+                border: 1px solid transparent;
+                border-radius: var(--radius-md);
+                font-size: var(--font-size-base);
+                font-weight: var(--font-weight-medium);
+                line-height: 1.4;
+                white-space: nowrap;
+                transition: all var(--transition-base);
+                color: var(--primary-accent);
+            }
+
+            &_Btn_Delete {
+                background-color: var(--danger-dark);
+                border: none;
+                border-radius: 5px;
+                color: var(--card-bg);
+                cursor: pointer;
+                padding: 8px 16px;
+                margin-left: 6px;
+            }
+
+            &_Button_GhostSm {
+                background: transparent;
+                border-color: var(--border);
+                color: var(--primary);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: var(--space-sm);
+                padding: 6px 12px;
+                border: 1px solid transparent;
+                border-radius: var(--radius-md);
+                font-size: var(--font-size-sm);
+                font-weight: var(--font-weight-medium);
+                line-height: 1.4;
+                white-space: nowrap;
+                transition: all var(--transition-base);
+
+            }
+        }
+    }
+
+    &_Form {
+        &_Grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: var(--space-base);
+
+            &_Group {
+                margin-bottom: var(--space-base);
+
+                &_Label {
+                    display: block;
+                    margin-bottom: 6px;
+                    color: var(--text-body);
+                    font-size: var(--font-size-sm);
+                    font-weight: var(--font-weight-medium);
+                }
+
+                &_Input,
+                &_Select {
+                    width: 100%;
+                    height: 42px;
+                    border: 1px solid var(--border);
+                    border-radius: var(--radius-md);
+                    background: var(--card-bg);
+                    color: var(--text-body);
+                    font-size: var(--font-size-base);
+                    outline: none;
+                    transition: all var(--transition-fast);
+
+                    &:focus {
+                        border-color: var(--primary);
+                        box-shadow: var(--shadow-focus);
+                    }
+                }
+
+                &_Input {
+                    padding: 0 14px;
+                }
+
+                &_Select {
+                    padding: 0 32px 0 14px;
+                    appearance: none;
+                    cursor: pointer;
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+                    background-repeat: no-repeat;
+                    background-position: right 12px center;
+                }
+            }
+        }
+    }
+}

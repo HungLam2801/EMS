@@ -1,0 +1,793 @@
+.DAT_Login {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 1);
+
+  &_Overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  &_Card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    background: rgba(176, 184, 193, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(12px);
+
+    &_Inner {
+      padding: 34px 48px 32px;
+    }
+
+    &_Header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 26px;
+
+      h1 {
+        color: rgba(255, 255, 255, 1);
+        font-size: 32px;
+        font-weight: 700;
+      }
+
+      &_Language {
+        width: 42px;
+        height: 42px;
+        border: none;
+        border-radius: 999px;
+        background: rgba(105, 152, 223, 0.82);
+        color: rgba(255, 255, 255, 1);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        font-size: 23px;
+
+        span {
+          position: absolute;
+          top: 0;
+          right: 0;
+          min-width: 18px;
+          height: 18px;
+          background: var(--danger);
+          color: white;
+          font-size: 10px;
+          font-weight: var(--font-weight-bold);
+          border-radius: var(--radius-full);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 4px;
+        }
+      }
+    }
+
+    &_Form {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+
+      &_Field {
+        position: relative;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.88);
+
+        input {
+          width: 100%;
+          height: 46px;
+          padding: 0 44px 0 38px;
+          border: none;
+          outline: none;
+          background: transparent;
+          color: rgba(255, 255, 255, 1);
+          font-size: 16px;
+          font-weight: 600;
+        }
+
+        input::placeholder {
+          color: rgba(255, 255, 255, 0.95);
+        }
+
+        &_Icon {
+          position: absolute;
+          left: 6px;
+          color: rgba(255, 255, 255, 1);
+          font-size: 21px;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        &_Action {
+          position: absolute;
+          right: 0;
+          border: none;
+          background: transparent;
+          color: rgba(255, 255, 255, 1);
+          width: 36px;
+          height: 36px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 21px;
+        }
+      }
+
+      &_Remember {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: rgba(255, 255, 255, 1);
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: -4px;
+
+        input {
+          width: 19px;
+          height: 19px;
+          accent-color: rgba(29, 44, 134, 1);
+        }
+      }
+
+      &_Error {
+        padding: 10px 12px;
+        border-radius: 8px;
+        background: rgba(180, 33, 33, 0.32);
+        color: rgba(255, 255, 255, 1);
+        font-size: 15.2px;
+      }
+
+      &_Submit {
+        height: 48px;
+        border: none;
+        border-radius: 6px;
+        background: rgba(26, 36, 124, 1);
+        color: rgba(255, 255, 255, 1);
+        font-size: 16px;
+        font-weight: 700;
+
+        &:disabled {
+          opacity: 0.7;
+        }
+      }
+
+      &_Links {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+
+        button {
+          border: none;
+          background: transparent;
+          color: rgba(255, 255, 255, 1);
+          font-size: 16px;
+          font-weight: 600;
+        }
+      }
+
+      &_Demo {
+        align-self: center;
+        border: none;
+        background: transparent;
+        color: rgba(255, 255, 255, 1);
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &_Footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: min(20vw, 340px);
+    color: rgba(255, 255, 255, 1);
+    font-size: 15.2px;
+    font-weight: 600;
+  }
+
+}
+
+.DAT_Forgot {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 1);
+
+  &_Overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  &_Card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    background: rgba(176, 184, 193, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(12px);
+
+    &_Inner {
+      padding: 34px 48px 32px;
+    }
+
+    &_Header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 26px;
+
+      h1 {
+        color: rgba(255, 255, 255, 1);
+        font-size: 32px;
+        font-weight: 700;
+      }
+
+      &_Back {
+        color: rgba(255, 255, 255, 1);
+        font-size: 30px;
+        font-weight: 700;
+        margin-right: 10px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+
+    &_Form {
+      display: flex;
+      flex-direction: column;
+
+      &_Resend {
+        margin-top: 5px;
+
+        &_Active {
+          color: var(--primary);
+          font-weight: var(--font-weight-medium);
+          cursor: pointer;
+        }
+      }
+
+      &_Otp {
+        display: flex;
+        justify-content: space-around;
+
+        input {
+          width: 50px;
+          height: 50px;
+          border-radius: 5px;
+          border: none;
+
+          text-align: center;
+          font-size: 20px;
+        }
+      }
+
+      &_Label {
+        color: var(--primary);
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 5px;
+      }
+
+      &_Sub {
+        color: var(--text-secondary);
+      }
+
+      &_Progress {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+
+        &_Item {
+          width: 100%;
+          height: 5px;
+          background-color: var(--primary-accent);
+          margin-right: 3px;
+          border-radius: 10px;
+        }
+      }
+
+      &_Field {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+
+        input {
+          width: 100%;
+          height: 46px;
+          padding: 0 44px 0 38px;
+          outline: none;
+          border: 1px solid var(--border-light);
+          background: transparent;
+          color: rgba(255, 255, 255, 1);
+          font-size: 16px;
+          font-weight: 400;
+          border-radius: 10px;
+
+        }
+
+        input::placeholder {
+          color: rgba(255, 255, 255, 0.95);
+        }
+
+        &_Icon {
+          position: absolute;
+          left: 6px;
+          color: rgba(255, 255, 255, 1);
+          font-size: 21px;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        &_Action {
+          position: absolute;
+          right: 0;
+          border: none;
+          background: transparent;
+          color: rgba(255, 255, 255, 1);
+          width: 36px;
+          height: 36px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 21px;
+        }
+      }
+
+      &_Error {
+        padding: 10px 12px;
+        border-radius: 8px;
+        background: rgba(180, 33, 33, 0.32);
+        color: rgba(255, 255, 255, 1);
+        font-size: 15.2px;
+      }
+
+      &_Submit {
+        height: 48px;
+        border: none;
+        border-radius: 6px;
+        background: rgba(26, 36, 124, 1);
+        color: rgba(255, 255, 255, 1);
+        font-size: 16px;
+        font-weight: 700;
+        margin-top: 8px;
+
+        &:disabled {
+          opacity: 0.7;
+        }
+      }
+
+    }
+  }
+}
+
+.DAT_LoginMobile {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 1);
+
+  &_Overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  &_Card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    background: rgba(176, 184, 193, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(12px);
+
+    &_Inner {
+      padding: 34px 48px 32px;
+    }
+
+    &_Header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 26px;
+
+      div {
+        color: rgba(255, 255, 255, 1);
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      &_Language {
+        width: 42px;
+        height: 42px;
+        border: none;
+        border-radius: 999px;
+        background: rgba(105, 152, 223, 0.82);
+        color: rgba(255, 255, 255, 1);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        font-size: 23px;
+
+        span {
+          position: absolute;
+          top: 0;
+          right: 0;
+          min-width: 18px;
+          height: 18px;
+          background: var(--danger);
+          color: white;
+          font-size: 10px;
+          font-weight: var(--font-weight-bold);
+          border-radius: var(--radius-full);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 4px;
+        }
+      }
+    }
+
+    &_Form {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+
+      &_Field {
+        position: relative;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.88);
+
+        input {
+          width: 100%;
+          height: 46px;
+          padding: 0 44px 0 38px;
+          border: none;
+          outline: none;
+          background: transparent;
+          color: rgba(255, 255, 255, 1);
+          font-size: 16px;
+          font-weight: 600;
+        }
+
+        input::placeholder {
+          color: rgba(255, 255, 255, 0.95);
+        }
+
+        &_Icon {
+          position: absolute;
+          left: 6px;
+          color: rgba(255, 255, 255, 1);
+          font-size: 21px;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        &_Action {
+          position: absolute;
+          right: 0;
+          border: none;
+          background: transparent;
+          color: rgba(255, 255, 255, 1);
+          width: 36px;
+          height: 36px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 21px;
+        }
+      }
+
+      &_Remember {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: rgba(255, 255, 255, 1);
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: -4px;
+
+        input {
+          width: 19px;
+          height: 19px;
+          accent-color: rgba(29, 44, 134, 1);
+        }
+      }
+
+      &_Error {
+        padding: 10px 12px;
+        border-radius: 8px;
+        background: rgba(180, 33, 33, 0.32);
+        color: rgba(255, 255, 255, 1);
+        font-size: 15.2px;
+      }
+
+      &_Submit {
+        height: 48px;
+        border: none;
+        border-radius: 6px;
+        background: rgba(26, 36, 124, 1);
+        color: rgba(255, 255, 255, 1);
+        font-size: 16px;
+        font-weight: 700;
+
+        &:disabled {
+          opacity: 0.7;
+        }
+      }
+
+      &_button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &_Links {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+
+          button {
+            border: none;
+            background: transparent;
+            color: rgba(255, 255, 255, 1);
+            font-size: 12px;
+            font-weight: 600;
+          }
+        }
+
+        &_Demo {
+          align-self: center;
+          border: none;
+          background: transparent;
+          color: rgba(255, 255, 255, 1);
+          font-size: 12px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  &_Footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: min(20vw, 340px);
+    color: rgba(255, 255, 255, 1);
+    font-size: 15.2px;
+    font-weight: 600;
+  }
+
+}
+
+.DAT_ForgotMobile {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 1);
+
+  &_Overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  &_Card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    background: rgba(176, 184, 193, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(12px);
+
+    &_Inner {
+      padding: 30px 36px 32px;
+    }
+
+    &_Header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 26px;
+
+      &_Title {
+        color: rgba(255, 255, 255, 1);
+        font-size: 26px;
+        font-weight: 700;
+      }
+
+      &_Back {
+        color: rgba(255, 255, 255, 1);
+        font-size: 30px;
+        font-weight: 700;
+        margin-right: 10px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+
+    &_Form {
+      display: flex;
+      flex-direction: column;
+
+      &_Resend {
+        margin-top: 5px;
+
+        &_Active {
+          color: var(--primary);
+          font-weight: var(--font-weight-medium);
+          cursor: pointer;
+        }
+      }
+
+      &_Otp {
+        display: flex;
+        justify-content: space-around;
+
+        input {
+          width: 40px;
+          height: 40px;
+          border-radius: 5px;
+          border: none;
+
+          text-align: center;
+          font-size: 20px;
+        }
+      }
+
+      &_Label {
+        color: var(--primary);
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 5px;
+      }
+
+      &_Sub {
+        color: var(--gray-700);
+      }
+
+      &_Progress {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+
+        &_Item {
+          width: 100%;
+          height: 5px;
+          background-color: var(--primary-accent);
+          margin-right: 3px;
+          border-radius: 10px;
+        }
+      }
+
+      &_Field {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+
+        input {
+          width: 100%;
+          height: 46px;
+          padding: 0 44px 0 38px;
+          outline: none;
+          border: 1px solid var(--border-light);
+          background: transparent;
+          color: rgba(255, 255, 255, 1);
+          font-size: 16px;
+          font-weight: 400;
+          border-radius: 10px;
+
+        }
+
+        input::placeholder {
+          color: rgba(255, 255, 255, 0.95);
+        }
+
+        &_Icon {
+          position: absolute;
+          left: 6px;
+          color: rgba(255, 255, 255, 1);
+          font-size: 21px;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        &_Action {
+          position: absolute;
+          right: 0;
+          border: none;
+          background: transparent;
+          color: rgba(255, 255, 255, 1);
+          width: 36px;
+          height: 36px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 21px;
+        }
+      }
+
+      &_Error {
+        padding: 10px 12px;
+        border-radius: 8px;
+        background: rgba(180, 33, 33, 0.32);
+        color: rgba(255, 255, 255, 1);
+        font-size: 15.2px;
+      }
+
+      &_Submit {
+        height: 48px;
+        border: none;
+        border-radius: 6px;
+        background: rgba(26, 36, 124, 1);
+        color: rgba(255, 255, 255, 1);
+        font-size: 16px;
+        font-weight: 700;
+        margin-top: 8px;
+
+        &:disabled {
+          opacity: 0.7;
+        }
+      }
+
+    }
+  }
+}

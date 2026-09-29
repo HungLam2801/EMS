@@ -1,0 +1,280 @@
+.DAT_UserInfor {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-base);
+    animation: systemSettingsFadeIn 0.3s ease-out;
+
+    &_Card {
+        padding: var(--space-lg);
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-md);
+        background: var(--card-bg);
+        box-shadow: var(--shadow-card);
+        transition: box-shadow var(--transition-base);
+
+        &:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        &_Header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            &_Icon {
+                display: flex;
+                align-items: center;
+                color: var(--primary)
+            }
+
+            &_Title {
+                color: var(--primary);
+                font-size: 24px;
+                font-weight: var(--font-weight-semibold);
+            }
+
+            &_Actions {
+                display: flex;
+                align-items: center;
+                gap: var(--space-sm);
+                flex-wrap: wrap;
+
+                &_Button,
+                &_Button_Primary {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: var(--space-sm);
+                    padding: 10px 20px;
+                    border: 1px solid transparent;
+                    border-radius: var(--radius-md);
+                    font-size: var(--font-size-base);
+                    font-weight: var(--font-weight-medium);
+                    line-height: 1.4;
+                    white-space: nowrap;
+                    transition: all var(--transition-base);
+                }
+
+                &_Button_Primary {
+                    background: var(--primary);
+                    color: var(--card-bg);
+
+                    &:hover {
+                        background: var(--primary-hover);
+                        box-shadow: 0 4px 12px rgba(11, 25, 103, 0.22);
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    &_Container {
+        padding: var(--space-lg);
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-md);
+        background: var(--card-bg);
+        box-shadow: var(--shadow-card);
+        transition: box-shadow var(--transition-base);
+
+        &_Row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-light);
+            align-items: center;
+            padding: 16px;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            &:first-child {
+                padding-top: 0px;
+            }
+
+            &_Content {
+
+                &_Title {
+                    color: var(--text-secondary);
+                    margin-bottom: 8px;
+
+                }
+
+                &_Label {
+                    font-weight: var(--font-weight-medium);
+
+                }
+
+                &_Avt {
+                    box-shadow: 0 0 0 3px rgba(213, 213, 213, 1);
+                    cursor: pointer;
+                    height: 45px;
+                    width: 45px;
+                    border-radius: var(--radius-full);
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: var(--font-weight-bold);
+                    font-size: var(--font-size-sm);
+                }
+            }
+
+            &_Btn {
+                color: var(--primary);
+                cursor: pointer;
+                display: block;
+                color: var(--text-primary);
+                font-size: var(--font-size-lg);
+                font-weight: var(--font-weight-semibold);
+
+            }
+        }
+    }
+
+    &_Modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &_Container {
+            background-color: var(--card-bg);
+            border-radius: 5px;
+            box-shadow:
+                2px 2px 5px rgba(73, 73, 73, 0.2),
+                -2px -2px 5px rgba(67, 67, 67, 0.2);
+            margin: 80px auto 250px;
+            overflow: hidden;
+            position: relative;
+            width: 400px;
+            top: 40px;
+
+            &_Header {
+                align-items: center;
+                background-color: var(--primary);
+                padding: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid var(--border-light);
+
+                &_Title {
+                    flex: 5 1;
+                    font-size: var(--font-size-xl);
+                    font-weight: var(--font-weight-bold);
+                    color: var(--card-bg);
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                &_Close {
+                    width: 32px;
+                    height: 32px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: none;
+                    color: var(--card-bg);
+                    font-size: 14px;
+                    cursor: pointer;
+                    transition: all var(--transition-fast);
+                    display: flex;
+                    flex: 5 1;
+                    justify-content: flex-end;
+
+                    display: flex;
+                    flex: 5 1;
+                    justify-content: flex-end;
+                }
+            }
+
+            &_Main {
+                align-items: center;
+                border-bottom: 1px solid rgba(198, 197, 197, 0.5);
+                font-size: 14px;
+                justify-content: center;
+                padding: 16px;
+
+                &_Label {
+                    cursor: default;
+                    color: var(--gray-900);
+                    margin-bottom: 5px;
+                }
+
+                &_Box {
+                    align-items: center;
+                    border: 1px solid rgba(198, 197, 197, 0.5);
+                    border-radius: 5px;
+                    display: flex;
+                    gap: 8px;
+                    justify-content: center;
+                    width: 100%;
+                    margin-bottom: 5px;
+
+
+                    input {
+                        border: none;
+                        box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        height: 30px;
+                        outline: none;
+                        padding: 8px;
+                        width: 100%;
+                    }
+
+                    button {
+                        cursor: pointer;
+                        padding: 8px;
+                        border: none;
+                        background: transparent;
+                    }
+                }
+
+                input {
+                    border-radius: 5px;
+                    box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    height: 30px;
+                    outline: none;
+                    padding: 8px;
+                    width: 100%;
+                }
+
+                &_Error {
+                    text-align: center;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    padding: 3px 8px;
+                    border-radius: 5px;
+                    background: var(--danger);
+                    color: rgba(255, 255, 255, 1);
+                    font-size: 14px;
+                }
+            }
+
+
+
+            &_Foot {
+                display: flex;
+                justify-content: flex-end;
+                padding: 8px;
+
+                button {
+                    background-color: var(--primary);
+                    border: none;
+                    border-radius: 5px;
+                    color: var(--card-bg);
+                    cursor: pointer;
+                    padding: 8px 16px;
+                }
+            }
+        }
+    }
+}

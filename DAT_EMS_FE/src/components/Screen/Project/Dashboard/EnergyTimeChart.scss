@@ -1,0 +1,93 @@
+.EnergyTimeChart {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+
+  align-items: center;
+
+  gap: 5px;
+
+  box-sizing: border-box;
+  min-height: 0;
+
+  &_Donut {
+    width: 100px;
+    height: 100px;
+  }
+
+  &_List {
+    width: 100%;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_Item {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+
+    &_Header {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &_Name {
+      display: flex;
+      align-items: center;
+      color: var(--gray-100);
+      gap: 10px;
+      color: var(--gray-300);
+      // color: var(--primary-light);
+
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+  }
+
+  &_Item_Dot {
+    width: 9px;
+    height: 9px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    color: red;
+  }
+
+  &_Item_Percent {
+    color: var(--gray-300);
+
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  &_Item_Progress {
+    width: 100%;
+    height: 7px;
+
+    background-color: rgb(7, 19, 38);
+
+    border-radius: 10px;
+
+    overflow: hidden;
+  }
+
+  &_Item_Progress_Value {
+    height: 70%;
+    border-radius: 10px;
+  }
+
+  &_Item_Value {
+    color: var(--gray-400);
+
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+}

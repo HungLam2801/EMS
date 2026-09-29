@@ -1,0 +1,158 @@
+.DAT_ProjectLayout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+
+  &-main {
+    flex: 1;
+    position: relative;
+    margin-left: var(--sidebar-width);
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100%;
+    min-width: 0;
+
+    transition: margin-left var(--transition-slow);
+  }
+
+  &.collapsed &-main {
+    margin-left: var(--sidebar-collapsed-width);
+  }
+
+  &-content {
+    position: relative;
+    flex: 1;
+
+    padding: 16px;
+    color: var(--pd-text-white);
+    background-color: var(--pd-bg-900);
+    background-image:
+      radial-gradient(
+        100% 60% at 50% -10%,
+        rgba(0, 133, 204, 0.12),
+        rgba(0, 0, 0, 0)
+      ),
+      radial-gradient(
+        70% 50% at 100% 100%,
+        rgba(124, 43, 238, 0.08),
+        rgba(0, 0, 0, 0)
+      );
+
+    overflow-y: auto;
+    min-width: 0;
+  }
+}
+
+.DAT_ProjectLayoutMobile {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--pd-bg-900);
+
+  &-main {
+    width: 100%;
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-content {
+    position: relative;
+    flex: 1;
+
+    width: 100%;
+    padding: 0;
+    padding-bottom: 72px;
+    background: var(--pd-bg-900);
+    color: var(--pd-text-white);
+
+    overflow-y: auto;
+  }
+}
+
+/* Notification Panel */
+.DAT_NotificationPanel {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+
+  &_Layer {
+    position: fixed;
+
+    top: calc(var(--header-height) + 12px);
+    right: 12px;
+    bottom: 12px;
+
+    width: 720px;
+    max-width: calc(100vw - var(--sidebar-width) - 24px);
+
+    background: var(--card-bg);
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-md);
+
+    z-index: calc(var(--z-header) + 10);
+
+    animation: DAT_NotificationPanel_SlideIn 0.2s ease;
+
+    &_Collapsed {
+      max-width: calc(100vw - var(--sidebar-collapsed-width) - 24px);
+    }
+
+    &_Backdrop {
+      position: fixed;
+      inset: 0;
+
+      background: rgba(0, 0, 0, 0);
+      border: none;
+
+      cursor: default;
+
+      z-index: -1;
+    }
+  }
+
+  &_Header {
+    flex: 0 0 auto;
+
+    height: 44px;
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+
+    background: var(--primary);
+
+    &_Title {
+      font-size: 16px;
+      font-weight: var(--font-weight-semibold);
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+
+  &_Body {
+    flex: 1;
+
+    background: rgba(244, 244, 244, 1);
+
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+@keyframes DAT_NotificationPanel_SlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
