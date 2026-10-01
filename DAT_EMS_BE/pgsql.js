@@ -1,29 +1,52 @@
-const path = require("path");
-require("dotenv").config({ path: path.join(__dirname, ".env") });
-const { Pool } = require("pg");
+const { Client } = require("pg");
+require("dotenv").config();
 
-// Thay thong tin DB trong .env, khong can sua ma nguon.
-const pool = new Pool({
-  host: process.env.DB_HOST || "localhost",
-  port: Number(process.env.DB_PORT || 5432),
-  database: process.env.DB_NAME,
+const client = new Client({
   user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
-  max: 10,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 5000,
+  port: process.env.DB_PORT,
+  extendedQuery: true,
+  rowMode: "array",
 });
 
-pool.on("error", (error) => {
-  console.error("PostgreSQL pool error:", error.message);
-});
-
-// SELECT 1 khong phu thuoc bang hay function cua database.
-async function checkConnection() {
-  if (!process.env.DB_NAME || !process.env.DB_USER) {
-    throw new Error("Please configure DB_NAME and DB_USER in .env");
+const connection = async () => {
+  try {
+    await client.connect();
+    console.log("PostgreSQL connected");
+  } catch (err) {
+    console.error("PostgreSQL connection error:", err.stack);
+    throw err;
   }
-  await pool.query("SELECT 1");
+};
+
+function read_db(select, table, value_db, Callback) {
+  if (value_db != "") {
+    client.query(
+      "SELECT " + select + " FROM " + table + " WHERE " + value_db,
+      function (err, result) {
+        if (err) {
+          console.error("Database query error:", err);
+          return Callback(null, err);
+        }
+
+        Callback(result, null);
+      },
+    );
+  } else {
+    client.query("SELECT " + select + " FROM " + table, function (err, result) {
+      if (err) {
+        console.error("Database query error:", err);
+        return Callback(null, err);
+      }
+
+      Callback(result, null);
+    });
+  }
 }
 
-module.exports = { pool, checkConnection };
+module.exports = {
+  connection,
+  read_db,
+};

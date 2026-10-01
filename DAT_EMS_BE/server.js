@@ -1,54 +1,60 @@
+require("dotenv").config({ path: `${process.cwd()}/.env` });
+
+const PORT = process.env.PORT || 5000;
+const HOST = process.env.HOST;
+
 const express = require("express");
-const cors = require("cors");
-const { pool, checkConnection } = require("./pgsql");
-
 const app = express();
-const PORT = Number(process.env.PORT || 5000);
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
+const apiRouter = require("./route/data.js");
+// const solar = require("./route/solar.js");
+const dbpostgres = require("./pgsql.js");
+
+// PostgreSQL
+dbpostgres
+  .connection()
+  .then(() => {
+    console.log("Postgres connected");
+  })
+  .catch((err) => {
+    console.log("Connection error:", err.message);
+  });
+
+// CORS
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN || "http://localhost:3000",
+    origin: process.env.CORS_ORIGIN,
     credentials: true,
+    optionsSuccessStatus: 200,
   }),
 );
+
+// Body parser
+app.use(bodyParser.json());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-if (require.main === module) {
-  const server = app.listen(PORT, () => {
-    console.log(`EMS backend is running at http://localhost:${PORT}`);
-    checkConnection()
-      .then(() => console.log("PostgreSQL connected successfully"))
-      .catch((error) => {
-        console.error("PostgreSQL connection error:", error.message);
-        console.log("Update .env and restart to connect to your database.");
-      });
+// Routes
+app.use("/api", apiRouter);
+// app.use("/solar", solar);
+
+// 404
+app.use((req, res) => {
+  res.status(404).json({
+    status: "Not Found",
+    mess: "Route not found",
   });
+});
 
-  server.on("error", async (error) => {
-    console.error("Server error:", error.message);
-    await pool.end();
-    process.exitCode = 1;
-  });
+// Error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
 
-  let shuttingDown = false;
-  function shutdown() {
-    if (shuttingDown) return;
-    shuttingDown = true;
-    const timeout = setTimeout(() => process.exit(1), 10000);
-    timeout.unref();
-    server.close(async () => {
-      try {
-        await pool.end();
-      } catch (error) {
-        console.error("Shutdown error:", error.message);
-        process.exitCode = 1;
-      } finally {
-        clearTimeout(timeout);
-      }
-    });
-  }
-  process.on("SIGINT", shutdown);
-  process.on("SIGTERM", shutdown);
-}
-
-module.exports = app;
+// Server
+app.listen(PORT, HOST, () => {
+  console.log(`Server running on http://${HOST}:${PORT}`);
+});
