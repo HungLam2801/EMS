@@ -25,9 +25,13 @@ export default function Alarm() {
 
   useEffect(() => {
     (async () => {
-      let data = await callApi("post", import.meta.env.REACT_APP_API + "/data/readBess", {
-        level: "bmslevel",
-      });
+      let data = await callApi(
+        "post",
+        process.env.REACT_APP_API + "/data/readBess",
+        {
+          level: "bmslevel",
+        },
+      );
       if (data.status === "true") {
         setDataInf(data.data);
         setStep(1);
@@ -40,39 +44,36 @@ export default function Alarm() {
 
   useEffect(() => {
     if (!step) return;
-    console.log('Connecting to Socket.IO server...');
+    console.log("Connecting to Socket.IO server...");
     // socket.value.emit("BESS_SUBSCRIBE", {
     //   level: "bmslevel"
     // });
 
-    const arrLevels = [
-      "rack1alarmlevel_02", "rack2alarmlevel_02"
-    ]
+    const arrLevels = ["rack1alarmlevel_02", "rack2alarmlevel_02"];
 
-    socket.value.emit("BESS_SUBSCRIBE_MANY", {
-      levels: arrLevels,
-    });
+    // socket.value.emit("BESS_SUBSCRIBE_MANY", {
+    //   levels: arrLevels,
+    // });
 
-    socket.value.on("BESS_DATA", (payload) => {
-      console.log(payload.level, payload.data)
-      setDataInf(prev => ({
-        ...prev,
-        ...payload.data
-      }));
-    });
+    // socket.value.on("BESS_DATA", (payload) => {
+    //   console.log(payload.level, payload.data);
+    //   setDataInf((prev) => ({
+    //     ...prev,
+    //     ...payload.data,
+    //   }));
+  });
 
-    return () => {
-      socket.value.emit("BESS_UNSUBSCRIBE", {
-        level: "bmslevel",
-      });
+  //   return () => {
+  //     socket.value.emit("BESS_UNSUBSCRIBE", {
+  //       level: "bmslevel",
+  //     });
 
-      socket.value.emit("BESS_UNSUBSCRIBE_MANY", {
-        levels: arrLevels
-      });
-      socket.value.off("BESS_DATA");
-    };
-
-  }, [step]);
+  //     socket.value.emit("BESS_UNSUBSCRIBE_MANY", {
+  //       levels: arrLevels,
+  //     });
+  //     socket.value.off("BESS_DATA");
+  //   };
+  // }, [step]);
   return (
     <>
       {isMobile ? (
@@ -86,8 +87,7 @@ export default function Alarm() {
             </div>
           </div>
 
-          <div className="DAT_AlarmMobile_Main">
-          </div>
+          <div className="DAT_AlarmMobile_Main"></div>
         </div>
       ) : (
         <div className="DAT_Alarm">
@@ -103,10 +103,18 @@ export default function Alarm() {
             <table className="DAT_Alarm_Main_Table">
               <thead>
                 <tr>
-                  <th className="DAT_Alarm_Main_Table_Header">{lang.formatMessage({ id: "alarm_id" })}</th>
-                  <th className="DAT_Alarm_Main_Table_Header">{lang.formatMessage({ id: "level" })}</th>
-                  <th className="DAT_Alarm_Main_Table_Header">{lang.formatMessage({ id: "message" })}</th>
-                  <th className="DAT_Alarm_Main_Table_Header">{lang.formatMessage({ id: "date" })}</th>
+                  <th className="DAT_Alarm_Main_Table_Header">
+                    {lang.formatMessage({ id: "alarm_id" })}
+                  </th>
+                  <th className="DAT_Alarm_Main_Table_Header">
+                    {lang.formatMessage({ id: "level" })}
+                  </th>
+                  <th className="DAT_Alarm_Main_Table_Header">
+                    {lang.formatMessage({ id: "message" })}
+                  </th>
+                  <th className="DAT_Alarm_Main_Table_Header">
+                    {lang.formatMessage({ id: "date" })}
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -115,24 +123,37 @@ export default function Alarm() {
                   <td className="DAT_Alarm_Main_Table_Content">
                     <StatusBadge status={"Serious"} />
                   </td>
-                  <td className="DAT_Alarm_Main_Table_Content">Nhiệt độ của thiết bị vượt mức</td>
-                  <td className="DAT_Alarm_Main_Table_Content">21:00 23/07/2026</td>
+                  <td className="DAT_Alarm_Main_Table_Content">
+                    Nhiệt độ của thiết bị vượt mức
+                  </td>
+                  <td className="DAT_Alarm_Main_Table_Content">
+                    21:00 23/07/2026
+                  </td>
                 </tr>
                 <tr>
                   <td className="DAT_Alarm_Main_Table_Content">Alarm-002</td>
                   <td className="DAT_Alarm_Main_Table_Content">
                     <StatusBadge status={"Medium"} />
                   </td>
-                  <td className="DAT_Alarm_Main_Table_Content">SOC low medium</td>
-                  <td className="DAT_Alarm_Main_Table_Content">17:00 25/07/2026</td>
+                  <td className="DAT_Alarm_Main_Table_Content">
+                    SOC low medium
+                  </td>
+                  <td className="DAT_Alarm_Main_Table_Content">
+                    17:00 25/07/2026
+                  </td>
                 </tr>
                 <tr>
                   <td className="DAT_Alarm_Main_Table_Content">Alarm-003</td>
                   <td className="DAT_Alarm_Main_Table_Content">
                     <StatusBadge status={"Slight"} />
                   </td>
-                  <td className="DAT_Alarm_Main_Table_Content">Summary of Cell low temperature slight alarm in the system </td>
-                  <td className="DAT_Alarm_Main_Table_Content">7:00 25/07/2026</td>
+                  <td className="DAT_Alarm_Main_Table_Content">
+                    Summary of Cell low temperature slight alarm in the
+                    system{" "}
+                  </td>
+                  <td className="DAT_Alarm_Main_Table_Content">
+                    7:00 25/07/2026
+                  </td>
                 </tr>
               </tbody>
             </table>

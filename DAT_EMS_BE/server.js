@@ -54,6 +54,18 @@ app.use((err, req, res, next) => {
   res.status(500).send("Something broke!");
 });
 
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN,
+    credentials: true,
+
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+
+    allowedHeaders: ["Content-Type", "Authorization"],
+
+    optionsSuccessStatus: 200,
+  }),
+);
 // Server
 app.listen(PORT, HOST, () => {
   console.log(`Server running on http://${HOST}:${PORT}`);

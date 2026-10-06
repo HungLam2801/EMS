@@ -21,7 +21,7 @@ import UserManagement from "./components/Screen/UserManagement/UserManagement";
 import Role from "./components/Screen/Role/Role";
 import UserInfo from "./components/Screen/UserInfo/UserInfo";
 
-export const socket = signal(io.connect(import.meta.env.REACT_APP_API));
+// export const socket = signal(io.connect(process.env.REACT_APP_API));
 
 const EmptyPage = () => null;
 
@@ -61,18 +61,13 @@ function App() {
           <Route path="/report" element={<Report />} />
           <Route
             path="/settings"
-            element={
-              <Navigate to="/settings/emission-electricity" replace />
-            }
+            element={<Navigate to="/settings/emission-electricity" replace />}
           />
           <Route
             path="/settings/emission-electricity"
             element={<SystemSetting />}
           />
-          <Route
-            path="/settings/alarm-threshold"
-            element={<Alarm_Project />}
-          />
+          <Route path="/settings/alarm-threshold" element={<Alarm_Project />} />
           <Route path="/project/:projectId" element={<EmptyPage />} />
         </Route>
 

@@ -78,7 +78,7 @@ export default function Alarm() {
     //   socket.value.off("BESS_DATA");
     // };
 
-    console.log("[MOCK] Simulating Socket.IO BESS_DATA updates...");
+    // console.log("[MOCK] Simulating Socket.IO BESS_DATA updates...");
     const intervalId = setInterval(() => {
       const payload = generateMockBessUpdate();
       setDataInf((prev) => ({
